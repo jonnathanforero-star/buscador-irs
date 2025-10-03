@@ -1,0 +1,131 @@
+<!-- Este archivo se usa si el nodo Webhook de n8n no genera un formulario HTML automáticamente. -->
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Búsqueda de Repuestos</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #f3f4f6; padding-top: 50px; }
+        /* Ocultamos el borde feo que a veces aparece en los iframes */
+        .card-container { display: flex; justify-content: center; align-items: center; min-height: 80vh; }
+    </style>
+</head>
+<body>
+
+    <div class="card-container">
+        <div class="bg-white p-8 rounded-xl shadow-2xl w-full max-w-md">
+            <h2 class="text-2xl font-bold mb-6 text-gray-800 text-center">Consulta de Código IRS</h2>
+            
+            <!-- IMPORTANTE: Reemplaza la URL de 'action' con la URL de tu Webhook de n8n -->
+            <form action="https://n8n.subocol.com/webhook-test/f20e3e00-e8d2-41c4-a2de-2e7939c52869" method="POST">
+                
+                <!-- Campo de Entrada para el Nombre de la Pieza (EXISTENTE) -->
+                <div class="mb-5">
+                    <label for="nombre_pieza" class="block text-sm font-medium text-gray-700 mb-2">
+                        Nombre de la Pieza a Buscar
+                    </label>
+                    <input 
+                        type="text" 
+                        id="nombre_pieza" 
+                        name="nombre_pieza" 
+                        required 
+                        placeholder="Ej: bocel faro delantero"
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
+                    />
+                </div>
+                
+                <!-- Campo de PAÍS (Lista Desplegable) -->
+                <div class="mb-5">
+                    <label for="pais_busqueda" class="block text-sm font-medium text-gray-700 mb-2">
+                        País de la Búsqueda
+                    </label>
+                    <select
+                        id="pais_busqueda"
+                        name="pais_busqueda"
+                        required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
+                    >
+                        <option value="">Seleccione un país</option>
+                        <option value="colombia">Colombia</option>
+                        <option value="chile">Chile</option>
+                        <option value="panama">Panamá</option>
+                    </select>
+                </div>
+<div class="mb-5">
+                    <label for="tipo_vehiculo" class="block text-sm font-medium text-gray-700 mb-2">
+                        Tipo de vehículo
+                    </label>
+                    <select
+                        id="tipo_vehiculo"
+                        name="tipo_vehiculo"
+                        required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
+                    >
+                        <option value="">Seleccione un país</option>
+                        <option value="liviano">Liviano</option>
+                        <option value="pesado">Pesado</option>
+                    </select>
+                </div>
+
+                <!-- Campo de CATEGORÍA (Lista Desplegable con todos los elementos de tu imagen) -->
+                <div class="mb-5">
+                    <label for="categoria_pieza" class="block text-sm font-medium text-gray-700 mb-2">
+                        Categoría de la Pieza
+                    </label>
+                    <select
+                        id="categoria_pieza"
+                        name="categoria_pieza"
+                        required
+                        class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out"
+                    >
+                        <option value="">Seleccione la categoría</option>
+                        <option value="abs">abs</option>
+                        <option value="adhesivos">adhesivos</option>
+                        <option value="airbag">airbag</option>
+                        <option value="baterias">baterias</option>
+                        <option value="broches_y_pines">broches y pines</option>
+                        <option value="cerraduras">cerraduras</option>
+                        <option value="chasis">chasis</option>
+                        <option value="complementos">complementos</option>
+                        <option value="copas_ruedas">copas ruedas</option>
+                        <option value="direccion">direccion</option>
+                        <option value="emblemas">emblemas</option>
+                        <option value="escape">escape</option>
+                        <option value="filtros">filtros</option>
+                        <option value="fluidos">fluidos</option>
+                        <option value="frenos">frenos</option>
+                        <option value="herramientas">herramientas</option>
+                        <option value="iluminacion">iluminacion</option>
+                        <option value="llantas">llantas</option>
+                        <option value="lujos">lujos</option>
+                        <option value="modulos">modulos</option>
+                        <option value="molduras_y_empaques">molduras y empaques</option>
+                        <option value="motor">motor</option>
+                        <option value="paneles">paneles</option>
+                        <option value="radiadores_y_aire_acondicionado">radiadores y aire acondicionado</option>
+                        <option value="refrigeracion">refrigeracion</option>
+                        <option value="rines">rines</option>
+                        <option value="sellantes">sellantes</option>
+                        <option value="sensores">sensores</option>
+                        <option value="sonido">sonido</option>
+                        <option value="suspension">suspension</option>
+                        <option value="tapiceria">tapiceria</option>
+                        <option value="transmision">transmision</option>
+                        <option value="vidrios">vidrios</option>
+                    </select>
+                </div>
+
+                <!-- Botón de Envío -->
+                <button 
+                    type="submit" 
+                    class="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-sm text-lg font-medium text-white bg-green-600 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition duration-200"
+                >
+                    Buscar Código
+                </button>
+                
+            </form>
+        </div>
+    </div>
+
+</body>
+</html>
